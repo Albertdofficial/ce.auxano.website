@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Navbar.css";
@@ -40,13 +40,16 @@ export default function Navbar() {
         {/* <SearchBar /> */}
         <ul className="menu text-2xl hidden md:flex" ref={menu}>
           <li className="px-2">
+            <Link to="/report">report</Link>
+          </li>
+          <li className="px-2">
             <Link to="/members">members</Link>
           </li>
           <li className="px-2">
             <Link to="/signup">signup</Link>
           </li>
           <li className="px-2">
-            <Link to="/firsttimers">firstTimers</Link>
+            <Link to="/firsttimers">firsttimers</Link>
           </li>
           <li className="px-2">
             <Link to="/birthdays">birthdays</Link>

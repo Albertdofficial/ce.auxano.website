@@ -11,6 +11,7 @@ export default function Signup() {
   const title = useRef("");
   const birthDate = useRef("");
   const phoneNumber = useRef("");
+  const whatsApp = useRef("");
   const email = useRef("");
   const date = useRef("");
   const invitedBy = useRef("");
@@ -22,6 +23,8 @@ export default function Signup() {
   const maritalStatus = useRef("");
   const occupation = useRef("");
   const workAddress = useRef("");
+  const salvation = useRef("");
+  const department = useRef("");
 
   const history = useHistory();
 
@@ -35,6 +38,7 @@ export default function Signup() {
       lastName: lastName.current.value,
       birthDate: birthDate.current.value,
       phoneNumber: phoneNumber.current.value,
+      whatsApp: whatsApp.current.value,
       email: email.current.value,
       date: date.current.value,
       invitedBy: invitedBy.current.value,
@@ -46,6 +50,8 @@ export default function Signup() {
       maritalStatus: maritalStatus.current.value,
       occupation: occupation.current.value,
       workAddress: workAddress.current.value,
+      salvation: salvation.current.value,
+      department: department.current.value,
     };
     console.log(doc);
 
@@ -116,9 +122,9 @@ export default function Signup() {
 
         <div className="member-detail">
           <label>
-            <span>Birth date</span>
+            <span>Birth date (day/month/year) </span>
             <input
-              placeholder="day/month/year"
+              placeholder="1/1/2000"
               type="text"
               ref={birthDate}
               required
@@ -148,14 +154,14 @@ export default function Signup() {
 
         <div className="member-detail">
           <label>
-            <span>Telephone number</span>
-            <input type="text" ref={phoneNumber} required placeholder="+90 533 444 5555" />
+            <span>Telephone number (Direct call)</span>
+            <input type="text" ref={phoneNumber} required />
           </label>
         </div>
         <div className="member-detail">
           <label>
             <span>WhatsApp Num (Ignore if same as above)</span>
-            <input type="text" ref={phoneNumber} placeholder="+90 533 123 4567" />
+            <input type="text" ref={whatsApp} />
           </label>
         </div>
         <div className="member-detail">
@@ -166,15 +172,15 @@ export default function Signup() {
         </div>
         <div className="member-detail">
           <label>
-            <span>Today's Date</span>
-            <input placeholder="day/month/year" type="text" ref={date} />
+            <span>Today's Date (day/month/year)</span>
+            <input type="text" ref={date} />
           </label>
         </div>
 
         <div className="member-detail">
           <label>
-            <span>Enter the cell name of who invited you</span>
-            <input type="text" ref={cell} />
+            <span>Did you pray the prayer of salvation today?</span>
+            <input type="text" ref={salvation} placeholder="yes/no" />
           </label>
         </div>
         <div className="member-detail">
@@ -205,8 +211,30 @@ export default function Signup() {
 
         <div className="member-detail">
           <label>
+            <span>Which department would you love to join?</span>
+            <select ref={department}>
+              <option value="Choir">Choir</option>
+              <option value="Ushering">Ushering</option>
+              <option value="Media">Media</option>
+              <option value="Follow up Team">Follow up Team</option>
+              <option value="Welfare">Welfare</option>
+              <option value="Venue Management">Venue Management</option>
+              <option value="Instrumentalist">Instrumentalist</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="member-detail">
+          <label>
             <span>Who invited you?</span>
             <input type="text" ref={invitedBy} />
+          </label>
+        </div>
+
+        <div className="member-detail">
+          <label>
+            <span>Enter the cell name of who invited you</span>
+            <input type="text" ref={cell} />
           </label>
         </div>
 

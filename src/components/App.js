@@ -17,6 +17,7 @@ import MemberDetails from "./MemeberDetails";
 import "../App.css";
 import Birthday from "../Birthday";
 import FirstTimers from "./FirstTimers";
+import Report from "./Report";
 
 export default function App() {
   const [data, setData] = useState(null);
@@ -64,6 +65,9 @@ export default function App() {
           </Route>
           <Route path="/firsttimers">
             <FirstTimers data={data} />
+          </Route>
+          <Route path="/report">
+            <Report data={data} />
           </Route>
           <Route path="/members">
             <Members data={data} />

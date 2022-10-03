@@ -20,7 +20,6 @@ export default function Members({ data }) {
 
             <div className="bottom pt-2">
              <p>  {member.phoneNumber}</p>
-              {/* <p>{`Birthday: ${member.birthDate}`} </p> */}
               <p>{member.email} </p>
             </div>
 

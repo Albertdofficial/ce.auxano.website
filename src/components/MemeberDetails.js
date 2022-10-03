@@ -50,6 +50,7 @@ export default function MemberDetails({ data }) {
       {person && <p>Invited By: {person.invitedBy} </p>}
       {person && <p>Address: {person.address} </p>}
       {person && <p>Has done water baptism: {person.hasDoneWaterBaptism} </p>}
+      {person && <p>Prayer requests: {person.prayerPoint} </p> }
     </div>
   );
 }

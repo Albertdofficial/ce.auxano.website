@@ -1,66 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { months } from "../Months";
 
 // import css
 import "./FirstTimers.css";
 
 const FirstTimers = ({ data }) => {
   const [firstTimers, setFirstTimers] = useState([]);
-  let currentMonth = new Date().getMonth();
-  let currentMonthName;
+  const[currentMonthName, setCurrentMonthName] = useState('');
+  let currentMonth = new Date().getMonth() + 1;
 
-  const months = [
-    { id: 1, m: "January" },
-    { id: 2, m: "February" },
-    { id: 3, m: "March" },
-    { id: 4, m: "April" },
-    { id: 5, m: "May" },
-    { id: 5, m: "June" },
-    { id: 7, m: "July" },
-    { id: 8, m: "August" },
-    { id: 9, m: "September" },
-    { id: 10, m: "October" },
-    { id: 11, m: "November" },
-    { id: 12, m: "December" },
-  ];
-
-  months.forEach((month) => {
-    if(month.id === currentMonth){
-        currentMonthName = month.m;
-    }
-  });
 
   useEffect(() => {
-    let dateJoined, phone, name, date, month;
+    let dateJoined, phone, name, month, prayerPoint;
     const results = [];
+
+    months.forEach((_month) => {
+      if (_month.id === currentMonth) {
+        setCurrentMonthName(_month.m);
+      }
+    });
 
     data &&
       data.forEach((member) => {
         if (member.date) {
           dateJoined = member.date;
-          date = Number(dateJoined.split("/").slice(0, 1).at(0));
           month = Number(dateJoined.split("/").slice(1, 2).at(0));
 
           if (month === currentMonth) {
             name = `${member.firstName}  ${member.middleName} ${member.lastName}`;
             phone = member.phoneNumber;
-            results.push({name, phone});
+            prayerPoint = member.prayerPoint;
+            results.push({ name, phone, prayerPoint });
           }
-
         }
       });
     setFirstTimers(results);
   }, [data, currentMonth]);
 
   return (
-    <div className="birthday">
+    <div className="birthday ">
       <h1>First Timers for {currentMonthName} </h1>
-      {firstTimers &&
-        firstTimers.map((firsttimer) => (
-          <div key={Math.random() * 1000000} className="celebrant">
-            <p>{firsttimer.name} </p>
-            <p>{firsttimer.phone} </p>
-          </div>
-        ))}
+      <div className="first-timers"  >
+        {firstTimers &&
+          firstTimers.map((firsttimer) => (
+            <div key={Math.random() * 1000000} className="first__timer">
+              <p>{firsttimer.name} </p>
+              <p>{firsttimer.phone} </p>
+              <p>{firsttimer.prayerPoint} </p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
