@@ -17,7 +17,7 @@ export default function Birthday({ data }) {
   });
 
   useEffect(() => {
-    let str,
+    let str, birthdate,
       name = "";
     let month;
     let results = [];
@@ -28,7 +28,8 @@ export default function Birthday({ data }) {
         month = Number(str.split("/").slice(1, 2).at(0));
         if (month === currentMonth) {
           name = `${member.firstName} ${member.lastName} `;
-          results.push(name);
+          birthdate = member.birthDate
+          results.push({name, birthdate});
         }
       });
     setCelebrants(results);
@@ -40,7 +41,8 @@ export default function Birthday({ data }) {
       {celebrants &&
         celebrants.map((cele) => (
           <div key={Math.random() * 1000000} className="celebrant">
-            {cele}{" "}
+            <p>{cele.name} </p>
+            <p>{cele.birthdate} </p>
           </div>
         ))}
     </div>
