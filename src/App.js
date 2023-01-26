@@ -13,46 +13,16 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import About from "./components/About";
 import MemberDetails from "./components/MemeberDetails";
+import Search from './components/Search'
 
 import "./App.css";
 import Birthday from "./Birthday";
 import FirstTimers from "./components/FirstTimers";
 import Report from "./components/Report";
+import { useFetch } from "./hooks/useFetch";
 
 export default function App() {
-  const [data, setData] = useState(null);
-  let membersData = [];
-  // const [error, setError] = useState('')
-
-  // get data from firebase
-  useEffect(() => {
-    const unsub = projectFirestore.collection("member").onSnapshot(
-      (snapshot) => {
-        if (snapshot.empty) {
-          console.log("No recipes to load");
-        } else {
-          let results = [];
-          snapshot.docs.forEach((doc) => {
-            results.push({ id: doc.id, ...doc.data() });
-          });
-          setData(results);
-        }
-      },
-      (err) => {
-        console.log(err.message);
-      }
-    );
-
-    return () => unsub();
-  }, []);
-
-  // removing dubplicates
-  if (data) {
-    const key = "firstName";
-    membersData = [
-      ...new Map(data.map((member) => [member[key], member])).values(),
-    ];
-  }
+  const [membersData ] = useFetch()
 
   return (
     <div className="App">
@@ -70,19 +40,22 @@ export default function App() {
             <About />
           </Route>
           <Route path="/birthdays">
-            <Birthday data={data} />
+            <Birthday data={membersData} />
           </Route>
           <Route path="/firsttimers">
-            <FirstTimers data={data} />
+            <FirstTimers data={membersData} />
           </Route>
           <Route path="/report">
-            <Report data={data} />
+            <Report data={membersData} />
           </Route>
           <Route path="/members">
             <Members/>
           </Route>
+          <Route path="/search">
+            <Search  data={membersData} />
+          </Route>
           <Route path="/memberdetails/:id">
-            <MemberDetails data={data} />
+            <MemberDetails data={membersData} />
           </Route>
           <Route path="*">
             <Redirect to="/" />

@@ -5,7 +5,7 @@ import "./Report.css";
 
 const Report = ({ data }) => {
   const [initialMonth, setInitialMonth] = useState(null);
-  const [initialMonthName, setInitialMonthName] = useState(null);
+  const [initialMonthName, setInitialMonthName] = useState('January');
   const month = useRef("");
   const [firstTimersData, setFirstTimersData] = useState();
   const [showForm, setShowForm] = useState(true);
@@ -22,6 +22,7 @@ const Report = ({ data }) => {
     resetInput();
   };
 
+  // useEffect runs when data or initialMonth changes
   useEffect(() => {
     setShowForm(!showForm);
     let dateJoined, phone, name, month;
@@ -60,6 +61,15 @@ const Report = ({ data }) => {
         </form>
       )}
 
+      {!showForm && (
+              <button
+                className="another__report-btn"
+                onClick={() => setShowForm(true)}
+              >
+                I Want report for another range
+              </button>
+            )}
+
       {!showForm && firstTimersData && (
         <div className="report-details" >
           <h1>First timers from {initialMonthName} </h1>
@@ -74,14 +84,7 @@ const Report = ({ data }) => {
                   <p>{firsttimer.phone} </p>
                 </div>
               ))}
-            {!showForm && (
-              <button
-                className="another__report-btn"
-                onClick={() => setShowForm(true)}
-              >
-                I Want report for another range
-              </button>
-            )}
+            
           </div>
         </div>
       )}

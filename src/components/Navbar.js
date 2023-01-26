@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 import "./Navbar.css";
-// import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const menu = useRef();
@@ -40,22 +39,24 @@ export default function Navbar() {
           </svg>
         </div>
 
-        {/* <SearchBar/> */}
         <ul className="menu text-2xl hidden md:flex" ref={menu}>
           <li className="px-2">
-            <Link to="/report">report</Link>
+            <Link to="/report">Report</Link>
           </li>
           <li className="px-2">
-            <Link to="/members">members</Link>
+            <Link to="/members">Members</Link>
           </li>
           <li className="px-2">
-            <Link to="/signup">signup</Link>
+            <Link to="/firsttimers">Firsttimers</Link>
           </li>
           <li className="px-2">
-            <Link to="/firsttimers">firsttimers</Link>
+            <Link to="/birthdays">Birthdays</Link>
           </li>
           <li className="px-2">
-            <Link to="/birthdays">birthdays</Link>
+            <Link to="/signup">Signup</Link>
+          </li>
+          <li className="px-2">
+            <Link to="/search">Search</Link>
           </li>
         </ul>
       </nav>
