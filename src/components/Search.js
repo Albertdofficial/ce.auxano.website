@@ -1,12 +1,12 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 import "./Search.css";
 
 export default function Search({ data }) {
-  // const [membersData, error, isPending] = useFetch();
+  const [membersData, error, isPending] = useFetch();
   const [members, setMembers] = useState([]);
-  const inputRef = useRef();
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     setMembers(data);
@@ -14,22 +14,19 @@ export default function Search({ data }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    inputRef.current.value = "";
+    setQuery("");
   };
 
   // search algorithm
-  const handleChange = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    members &&
-      setMembers((prev) => {
-        return prev.filter(
-          (member) =>
-            member?.firstName?.toLowerCase().includes(searchTerm) ||
-            member?.middleName?.toLowerCase().includes(searchTerm) ||
-            member?.lastName?.toLowerCase().includes(searchTerm)
-        );
-      });
-  };
+  const filteredMembers = useMemo(() => {
+    return members.filter((member) => {
+      return (
+        member?.firstName?.toLowerCase().includes(query?.toLowerCase()) ||
+        member?.middleName?.toLowerCase().includes(query?.toLowerCase()) ||
+        member?.lastName?.toLowerCase().includes(query?.toLowerCase())
+      );
+    });
+  }, [members, query]);
 
   return (
     <div className="search">
@@ -38,13 +35,13 @@ export default function Search({ data }) {
           <input
             className="search-term"
             type="text"
-            ref={inputRef}
-            onChange={handleChange}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="btn">Search</button>
+          <button className="btn">New search</button>
         </div>
         <div className="members">
-          {members?.map((member) => (
+          {filteredMembers?.map((member) => (
             <div className="member" key={member.id}>
               <p>
                 {member.firstName} {member.middleName} {member.lastName}{" "}
@@ -52,7 +49,22 @@ export default function Search({ data }) {
             </div>
           ))}
         </div>
+        {error && <p> {error} </p>}
+        {isPending && <p>Loading..</p>}
       </form>
     </div>
   );
 }
+
+// const handleChange = (e) => {
+//   const searchTerm = e.target.value.toLowerCase();
+//   members &&
+//     setMembers((prev) => {
+//       return prev.filter(
+//         (member) =>
+//           member?.firstName?.toLowerCase().includes(searchTerm) ||
+//           member?.middleName?.toLowerCase().includes(searchTerm) ||
+//           member?.lastName?.toLowerCase().includes(searchTerm)
+//       );
+//     });
+// };
