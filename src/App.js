@@ -1,6 +1,6 @@
 import React from "react";
 
-import { projectFirestore } from "./config";
+import { projectFirestore } from "./components/config";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -8,19 +8,20 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Members from './Members'
-import Navbar from "./Navbar";
-import Signup from "./Signup";
-import About from "./About";
-import MemberDetails from "./MemeberDetails";
+import Members from "./components/Members";
+import Navbar from "./components/Navbar";
+import Signup from "./components/Signup";
+import About from "./components/About";
+import MemberDetails from "./components/MemeberDetails";
 
-import "../App.css";
-import Birthday from "../Birthday";
-import FirstTimers from "./FirstTimers";
-import Report from "./Report";
+import "./App.css";
+import Birthday from "./Birthday";
+import FirstTimers from "./components/FirstTimers";
+import Report from "./components/Report";
 
 export default function App() {
   const [data, setData] = useState(null);
+  let membersData = [];
   // const [error, setError] = useState('')
 
   // get data from firebase
@@ -44,6 +45,14 @@ export default function App() {
 
     return () => unsub();
   }, []);
+
+  // removing dubplicates
+  if (data) {
+    const key = "firstName";
+    membersData = [
+      ...new Map(data.map((member) => [member[key], member])).values(),
+    ];
+  }
 
   return (
     <div className="App">
@@ -70,7 +79,7 @@ export default function App() {
             <Report data={data} />
           </Route>
           <Route path="/members">
-            <Members data={data} />
+            <Members/>
           </Route>
           <Route path="/memberdetails/:id">
             <MemberDetails data={data} />

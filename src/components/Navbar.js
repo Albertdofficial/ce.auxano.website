@@ -2,7 +2,10 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+
+
 import "./Navbar.css";
+// import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const menu = useRef();
@@ -37,7 +40,7 @@ export default function Navbar() {
           </svg>
         </div>
 
-        {/* <SearchBar /> */}
+        {/* <SearchBar/> */}
         <ul className="menu text-2xl hidden md:flex" ref={menu}>
           <li className="px-2">
             <Link to="/report">report</Link>
