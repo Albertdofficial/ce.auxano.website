@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { projectFirestore } from "../components/config";
+import { projectFirestore } from "../firebase/config";
 
 export function useFetch() {
   const [data, setData] = useState(null);
@@ -54,5 +54,5 @@ export function useFetch() {
     }
   }
 
-  return [membersData, error, isPending];
+  return { membersData, error, isPending };
 }

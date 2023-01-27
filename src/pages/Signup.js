@@ -1,11 +1,11 @@
-import React, {useState, useRef } from "react";
-import { projectFirestore } from "./config";
+import React, { useState, useRef } from "react";
+import { projectFirestore } from "../firebase/config";
 import { useHistory } from "react-router-dom";
 
 import "./Signup.css";
 
 export default function Signup() {
-  const[isPending, setIsPending] = useState(false)
+  const [isPending, setIsPending] = useState(false);
   const firstName = useRef("");
   const middleName = useRef("");
   const lastName = useRef("");
@@ -31,7 +31,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsPending(true)
+    setIsPending(true);
 
     const doc = {
       title: title.current.value,
@@ -61,7 +61,7 @@ export default function Signup() {
       await projectFirestore.collection("member").add(doc);
     } catch (err) {
       console.log(err);
-      setIsPending(false)
+      setIsPending(false);
     }
     history.push("/members");
   };
@@ -134,7 +134,7 @@ export default function Signup() {
             <input type="email" ref={email} />
           </label>
         </div>
-        
+
         <div className="member-detail">
           <label>
             <span>Home address </span>
@@ -170,11 +170,7 @@ export default function Signup() {
         <div className="member-detail">
           <label>
             <span>Have you done water Baptism? </span>
-            <input
-              placeholder="yes/no"
-              type="text"
-              ref={hasDoneWaterBaptism}
-            />
+            <input placeholder="yes/no" type="text" ref={hasDoneWaterBaptism} />
           </label>
         </div>
 
@@ -234,7 +230,9 @@ export default function Signup() {
           </label>
         </div>
 
-        <button disabled={isPending} type="submit">Submit</button>
+        <button disabled={isPending} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

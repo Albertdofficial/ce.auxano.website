@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../styles.css";
 
 export default function Members({membersData}) {
-  // const [membersData, error, isPending] = useFetch();
+  const {error, isPending} = useFetch();
 
 
   return (
@@ -26,8 +26,8 @@ export default function Members({membersData}) {
             </div>
 
             <Link to={`memberdetails/${member.id}`}>read more...</Link>
-            {/* {error && <p className="error"> {error} </p>}
-            {isPending && <p className="isPending">Loading... </p>} */}
+            {error && <p className="error"> {error} </p>}
+            {isPending && <p className="isPending">Loading... </p>}
           </div>
         ))}
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { months } from "./Months";
+import { months } from "../Months";
 
 // styles
 import "./Birthday.css";

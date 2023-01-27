@@ -14,7 +14,7 @@ const Report = ({ data }) => {
     e.preventDefault();
 
     months.forEach((_month) => {
-      if (_month.m.toUpperCase() == month.current.value.toUpperCase()) {
+      if (_month.m.toUpperCase() === month.current.value.toUpperCase()) {
         setInitialMonth(_month.id);
         setInitialMonthName(_month.m);
       }

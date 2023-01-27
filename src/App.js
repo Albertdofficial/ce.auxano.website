@@ -6,21 +6,21 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Members from "./components/Members";
+import Members from "./pages/Members";
 import Navbar from "./components/Navbar";
-import Signup from "./components/Signup";
-import About from "./components/About";
+import Signup from "./pages/Signup";
+import About from "./pages/About";
 import MemberDetails from "./components/MemeberDetails";
-import Search from './components/Search'
+import Search from "./pages/Search";
 
 import "./App.css";
-import Birthday from "./Birthday";
-import FirstTimers from "./components/FirstTimers";
-import Report from "./components/Report";
+import Birthday from "./pages/Birthday";
+import FirstTimers from "./pages/FirstTimers";
+import Report from "./pages/Report";
 import { useFetch } from "./hooks/useFetch";
 
 export default function App() {
-  const [membersData ] = useFetch()
+  const {membersData } = useFetch();
 
   return (
     <div className="App">
@@ -47,10 +47,10 @@ export default function App() {
             <Report data={membersData} />
           </Route>
           <Route path="/members">
-            <Members membersData={membersData}  />
+            <Members membersData={membersData} />
           </Route>
           <Route path="/search">
-            <Search  data={membersData} />
+            <Search data={membersData} />
           </Route>
           <Route path="/memberdetails/:id">
             <MemberDetails data={membersData} />

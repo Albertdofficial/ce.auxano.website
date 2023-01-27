@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import "./Search.css";
 
 export default function Search({ data }) {
-  const [membersData, error, isPending] = useFetch();
+  const {error, isPending} = useFetch();
   const [members, setMembers] = useState([]);
   const [query, setQuery] = useState("");
 
