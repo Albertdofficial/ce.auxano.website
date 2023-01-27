@@ -1,7 +1,5 @@
 import React from "react";
 
-import { projectFirestore } from "./components/config";
-import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -49,7 +47,7 @@ export default function App() {
             <Report data={membersData} />
           </Route>
           <Route path="/members">
-            <Members/>
+            <Members membersData={membersData}  />
           </Route>
           <Route path="/search">
             <Search  data={membersData} />

@@ -46,7 +46,7 @@ const FirstTimers = ({ data }) => {
             <div key={Math.random() * 1000000} className="first__timer">
               <p>{firsttimer.name} </p>
               <p>{firsttimer.phone} </p>
-              <p>{firsttimer.prayerPoint} </p>
+              {/* <p>{firsttimer.prayerPoint.split(' ').slice(0,9).join(' ')} </p> */}
             </div>
           ))}
       </div>

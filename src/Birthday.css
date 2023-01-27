@@ -1,14 +1,22 @@
+
 .birthday {
   margin: 0 2rem;
 }
+
+.celebrants{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
 .birthday .celebrant {
+  max-width: 24rem;
+  width: 100%;
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
   margin: 1rem auto;
   border: 1px solid rgb(199, 198, 198);
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 40rem;
   text-align: left;
 }
 

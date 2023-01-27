@@ -4,18 +4,10 @@ import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import "../styles.css";
 
-export default function Members() {
-  const [membersData, error, isPending] = useFetch();
+export default function Members({membersData}) {
+  // const [membersData, error, isPending] = useFetch();
 
-  membersData.sort((obj1, obj2) => {
-    if (obj1.firstName > obj2.firstName) {
-      return 1;
-    } else if (obj2.firstName > obj1.firstName) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
+
   return (
     <div className="sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {membersData &&
@@ -34,8 +26,8 @@ export default function Members() {
             </div>
 
             <Link to={`memberdetails/${member.id}`}>read more...</Link>
-            {error && <p className="error"> {error} </p>}
-            {isPending && <p className="isPending">Loading... </p>}
+            {/* {error && <p className="error"> {error} </p>}
+            {isPending && <p className="isPending">Loading... </p>} */}
           </div>
         ))}
     </div>

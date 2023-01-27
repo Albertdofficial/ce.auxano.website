@@ -72,7 +72,7 @@ const Report = ({ data }) => {
 
       {!showForm && firstTimersData && (
         <div className="report-details" >
-          <h1>First timers from {initialMonthName} </h1>
+          <h1>First timers from {initialMonthName} 2022 </h1>
           <div className="birthday  report-range">
             {firstTimersData &&
               firstTimersData.map((firsttimer) => (

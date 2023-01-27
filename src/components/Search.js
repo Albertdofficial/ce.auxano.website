@@ -23,7 +23,8 @@ export default function Search({ data }) {
       return (
         member?.firstName?.toLowerCase().includes(query?.toLowerCase()) ||
         member?.middleName?.toLowerCase().includes(query?.toLowerCase()) ||
-        member?.lastName?.toLowerCase().includes(query?.toLowerCase())
+        member?.lastName?.toLowerCase().includes(query?.toLowerCase()) ||
+        member?.title?.toLowerCase().includes(query?.toLowerCase())
       );
     });
   }, [members, query]);

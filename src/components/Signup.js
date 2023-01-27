@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, {useState, useRef } from "react";
 import { projectFirestore } from "./config";
 import { useHistory } from "react-router-dom";
 
 import "./Signup.css";
 
 export default function Signup() {
+  const[isPending, setIsPending] = useState(false)
   const firstName = useRef("");
   const middleName = useRef("");
   const lastName = useRef("");
@@ -30,6 +31,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsPending(true)
 
     const doc = {
       title: title.current.value,
@@ -53,33 +55,15 @@ export default function Signup() {
       salvation: salvation.current.value,
       department: department.current.value,
     };
-    console.log(doc);
 
     //add a document to a firebase document
     try {
       await projectFirestore.collection("member").add(doc);
     } catch (err) {
       console.log(err);
+      setIsPending(false)
     }
-
-    // resetForm();
-
     history.push("/members");
-  };
-
-  const resetForm = () => {
-    title.current.value = "";
-    firstName.current.value = "";
-    middleName.current.value = "";
-    lastName.current.value = "";
-    birthDate.current.value = "";
-    phoneNumber.current.value = "";
-    email.current.value = "";
-    date.current.value = "";
-    invitedBy.current.value = "";
-    cell.current.value = "";
-    address.current.value = "";
-    hasDoneWaterBaptism.current.value = "";
   };
 
   return (
@@ -134,6 +118,25 @@ export default function Signup() {
 
         <div className="member-detail">
           <label>
+            <span>Telephone number (Direct call)</span>
+            <input type="text" ref={phoneNumber} />
+          </label>
+        </div>
+        <div className="member-detail">
+          <label>
+            <span>WhatsApp Num (Ignore if same as above)</span>
+            <input type="text" ref={whatsApp} />
+          </label>
+        </div>
+        <div className="member-detail">
+          <label>
+            <span>Email Address</span>
+            <input type="email" ref={email} />
+          </label>
+        </div>
+        
+        <div className="member-detail">
+          <label>
             <span>Home address </span>
             <input type="text" ref={address} />
           </label>
@@ -149,25 +152,6 @@ export default function Signup() {
           <label>
             <span>Work/Business/School Address</span>
             <input type="text" ref={workAddress} />
-          </label>
-        </div>
-
-        <div className="member-detail">
-          <label>
-            <span>Telephone number (Direct call)</span>
-            <input type="text" ref={phoneNumber} required />
-          </label>
-        </div>
-        <div className="member-detail">
-          <label>
-            <span>WhatsApp Num (Ignore if same as above)</span>
-            <input type="text" ref={whatsApp} />
-          </label>
-        </div>
-        <div className="member-detail">
-          <label>
-            <span>Email Address</span>
-            <input type="email" ref={email} />
           </label>
         </div>
         <div className="member-detail">
@@ -190,7 +174,6 @@ export default function Signup() {
               placeholder="yes/no"
               type="text"
               ref={hasDoneWaterBaptism}
-              required
             />
           </label>
         </div>
@@ -220,6 +203,7 @@ export default function Signup() {
               <option value="Welfare">Welfare</option>
               <option value="Venue Management">Venue Management</option>
               <option value="Instrumentalist">Instrumentalist</option>
+              <option value="other">Other</option>
             </select>
           </label>
         </div>
@@ -250,7 +234,7 @@ export default function Signup() {
           </label>
         </div>
 
-        <button type="submit">Submit</button>
+        <button disabled={isPending} type="submit">Submit</button>
       </form>
     </div>
   );
