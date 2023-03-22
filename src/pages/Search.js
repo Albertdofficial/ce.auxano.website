@@ -45,7 +45,7 @@ export default function Search({ data }) {
           {filteredMembers?.map((member) => (
             <div className="member" key={member.id}>
               <p>
-                {member.firstName} {member.middleName} {member.lastName}{" "}
+                {member.firstName} {member.middleName?member.middleName:''} {member.lastName}{" "}
               </p>
             </div>
           ))}

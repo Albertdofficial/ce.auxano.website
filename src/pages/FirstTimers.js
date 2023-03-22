@@ -27,7 +27,7 @@ const FirstTimers = ({ data }) => {
           month = Number(dateJoined.split("/").slice(1, 2).at(0));
 
           if (month === currentMonth) {
-            name = `${member.firstName}  ${member.middleName} ${member.lastName}`;
+            name = `${member.firstName}  ${member.middleName?member.middleName:''} ${member.lastName}`;
             phone = member.phoneNumber;
             prayerPoint = member.prayerPoint;
             results.push({ name, phone, prayerPoint });

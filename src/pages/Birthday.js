@@ -28,7 +28,7 @@ export default function Birthday({ data }) {
         str = member.birthDate;
         month = Number(str.split("/").slice(1, 2).at(0));
         if (month === currentMonth) {
-          name = `${member.firstName} ${member.middleName} ${member.lastName} `;
+          name = `${member.firstName} ${member.middleName?member.middleName:''} ${member.lastName} `;
           birthdate = member.birthDate;
           results.push({ name, birthdate });
         }

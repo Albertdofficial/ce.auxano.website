@@ -35,7 +35,7 @@ const Report = ({ data }) => {
           month = Number(dateJoined.split("/").slice(1, 2).at(0));
 
           if (month >= initialMonth) {
-            name = `${member.firstName}  ${member.middleName} ${member.lastName}`;
+            name = `${member.firstName}  ${member.middleName?member.middleName:''} ${member.lastName}`;
             phone = member.phoneNumber;
             results.push({ name, phone });
           }

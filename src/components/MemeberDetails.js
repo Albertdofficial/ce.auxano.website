@@ -36,7 +36,6 @@ export default function MemberDetails({ data }) {
     }
   }, [id]);
 
-  console.log(person);
 
   return (
     <div className="member-details">
@@ -45,17 +44,18 @@ export default function MemberDetails({ data }) {
       {person && (
         <p>
           Full name:{" "}
-          {`${person.title} ${person.firstName} ${person.middleName} ${person.lastName} `}{" "}
+          {`${person.title} ${person.firstName} ${person.middleName?person.middleName:''} ${person.lastName} `}{" "}
         </p>
       )}
-      {person && <p>Phone {person.phoneNumber} </p>}
-      {person && <p>Email: {person.email} </p>}
-      {person && <p>Birth date: {person.birthDate} </p>}
-      {person && <p>Date joined {person.date} </p>}
-      {person && <p>Invited By: {person.invitedBy} </p>}
-      {person && <p>Address: {person.address} </p>}
-      {person && <p>Has done water baptism: {person.hasDoneWaterBaptism} </p>}
-      {person && <p>Prayer requests: {person.prayerPoint} </p>}
+      {person?.phoneNumber && <p>Phone: {person.phoneNumber} </p>}
+      {person?.email && <p>Email: {person.email} </p>}
+      {person?.birthDate && <p>Birth date: {person.birthDate} </p>}
+      {person?.date && <p>Date joined {person.date} </p>}
+      {person?.invitedBy && <p>Invited By: {person.invitedBy} </p>}
+      {person?.address && <p>Address: {person.address} </p>}
+      {person?.hasDoneWaterBaptism && <p>Has done water baptism: {person.hasDoneWaterBaptism} </p>}
+      {person?.salvation && <p>Born again: {person.salvation} </p>}
+      {person?.prayerPoint && <p>Prayer requests: {person.prayerPoint} </p>}
     </div>
   );
 }
