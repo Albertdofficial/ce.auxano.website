@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ce.auxano.website/static/css/main.02a122ca.css",
-    "main.js": "/ce.auxano.website/static/js/main.1f6b1ddc.js",
+    "main.js": "/ce.auxano.website/static/js/main.50075c4e.js",
     "index.html": "/ce.auxano.website/index.html",
     "main.02a122ca.css.map": "/ce.auxano.website/static/css/main.02a122ca.css.map",
-    "main.1f6b1ddc.js.map": "/ce.auxano.website/static/js/main.1f6b1ddc.js.map"
+    "main.50075c4e.js.map": "/ce.auxano.website/static/js/main.50075c4e.js.map"
   },
   "entrypoints": [
     "static/css/main.02a122ca.css",
-    "static/js/main.1f6b1ddc.js"
+    "static/js/main.50075c4e.js"
   ]
 }
