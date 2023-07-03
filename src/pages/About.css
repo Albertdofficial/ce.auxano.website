@@ -1,0 +1,46 @@
+.home-page {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: #666666;
+  margin-top: 2rem;
+}
+
+.home-page p {
+  margin-top: 0.5rem;
+  max-width: 25rem;
+  height: 10rem;
+  font-size: 1.25rem;
+  padding: 1rem;
+  line-height: 1.75rem;
+  letter-spacing: 0.025rem;
+  box-shadow: 2px 2px 5px 5px rgb(209, 207, 207);
+}
+
+.home-page h1 {
+  color: crimson;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .vision,
+  .mission,
+  .purpose {
+    margin-top: 1rem;
+  }
+
+  .home-page p {
+    margin-top: 0.05rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .vision {
+    margin-top: 0;
+  }
+
+  .home-page{
+    margin-top: 0.5rem;
+  }
+}

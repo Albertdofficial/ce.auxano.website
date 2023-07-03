@@ -1,0 +1,66 @@
+.input-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-form form {
+  width: 40rem;
+  border: 1px solid #fff;
+  box-shadow: 10px 5px 30px 1px rgb(170, 167, 167);
+}
+.input-form div {
+  color: gray;
+  text-align: left;
+}
+
+.input-form input, select {
+  display: block;
+  width: 20rem;
+  text-align: left;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.input-form .member-detail:first-child {
+  margin-top: 1rem;
+}
+
+.input-form label {
+  display: block;
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.input-form span{
+  padding-left: .25rem;
+}
+
+.input-form textarea {
+  color: gray;
+  outline: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.member-detail {
+  margin-bottom: 1rem;
+}
+
+input:focus {
+  border: none;
+  outline: rgb(112, 111, 111);
+}
+
+.input-form button {
+  background-color: crimson;
+  color: white;
+  border-radius: 10rem;
+  padding: 0.5rem 0;
+  width: 20rem;
+  margin: 1rem auto;
+}
+
+.input-form button:hover {
+  filter: brightness(120%);
+  box-shadow: 10px 5px 30px 5px rgb(170, 167, 167);
+}

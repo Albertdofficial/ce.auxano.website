@@ -1,0 +1,21 @@
+.member-details {
+    max-width: 40rem;
+    margin: 1rem auto;
+    box-shadow: 10px 5px 30px 1px rgb(170, 167, 167);
+    padding-left: 2rem;
+  }
+  
+  .member-details p {
+    margin-top: 0.5rem;
+    text-align: left;
+    font-size: 1.25rem;
+  }
+  
+  .member-details p:nth-child(1){
+      padding-top: 1rem;
+      margin-top: 0;
+  }
+  
+  .member-details p:last-child{
+      padding-bottom: 1rem;
+  }

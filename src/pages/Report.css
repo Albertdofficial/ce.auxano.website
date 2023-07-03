@@ -1,0 +1,83 @@
+ .report {
+  display: relative;
+  font-size: 1.5rem;
+  color: #333;
+} 
+
+.report h1{
+  margin-top: 0.5rem;
+  font-size: 1.75rem;
+  color: #e41749;
+  font-weight: 700;
+}
+
+.report-form {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.report-form  span {
+  display: flex;
+}
+
+.report-form  input {
+  width: 26rem;
+  display: flex;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.report button {
+  margin-top: 2rem;
+  border: 2px solid green;
+  background-color: #fff;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.report button:hover {
+  filter: brightness(150%);
+}
+
+.report-range {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.report-range p {
+  text-align: left;
+}
+
+.first-timer{
+  width: 20rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem auto;
+  border: 1px solid rgb(199, 198, 198);
+  box-shadow: 1px 3px 5px rgb(0 0 0 / 10%);
+  width: 100%;
+  max-width: 20rem;
+  text-align: left;
+}
+
+.another__report-btn {
+  display: flex;
+  margin: 0 auto;
+  width: 25rem;
+}
+
+@media screen and (max-width: 500px){
+  .report-form  input{
+    max-width: 16rem;
+    margin: 0 auto;
+  }
+
+  .report-form  span{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
